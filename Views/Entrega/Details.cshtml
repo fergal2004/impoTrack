@@ -1,0 +1,61 @@
+@model impoTrack.Models.Entrega
+
+@{
+    ViewData["Title"] = "Detalles de Entrega";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Información de Entrega</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Pedido)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Pedido.DireccionEntrega)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Repartidor)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Repartidor.Nombre) @Html.DisplayFor(model => model.Repartidor.Apellido)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ZonaEntrega)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.ZonaEntrega)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.RutaEntrega)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.RutaEntrega)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.FechaAsignacion)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.FechaAsignacion)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.FechaEntregaReal)
+        </dt>
+        <dd class="col-sm-8">
+            @if (Model.FechaEntregaReal.HasValue)
+            {
+                @Html.DisplayFor(model => model.FechaEntregaReal)
+            }
+            else
+            {
+                <span>Pendiente</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EntregaID" class="btn btn-primary">Editar</a> |
+    <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+</div>

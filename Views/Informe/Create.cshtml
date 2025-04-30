@@ -1,0 +1,40 @@
+@model impoTrack.Models.Informe
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Informe</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TipoInforme" class="control-label"></label>
+                <input asp-for="TipoInforme" class="form-control" />
+                <span asp-validation-for="TipoInforme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaGeneracion" class="control-label"></label>
+                <input asp-for="FechaGeneracion" class="form-control" />
+                <span asp-validation-for="FechaGeneracion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatosInforme" class="control-label"></label>
+                <input asp-for="DatosInforme" class="form-control" />
+                <span asp-validation-for="DatosInforme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

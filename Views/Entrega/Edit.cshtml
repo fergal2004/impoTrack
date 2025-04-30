@@ -1,0 +1,63 @@
+@model impoTrack.Models.Entrega
+
+@{
+    ViewData["Title"] = "Editar Entrega"; // More descriptive title
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Editar Información de Entrega</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EntregaID" />
+
+            <div class="form-group">
+                <label asp-for="PedidoID" class="control-label">Pedido:</label>
+                <select asp-for="PedidoID" class="form-control" asp-items="ViewBag.PedidoID" required></select>
+                <span asp-validation-for="PedidoID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RepartidorID" class="control-label">Repartidor:</label>
+                <select asp-for="RepartidorID" class="form-control" asp-items="ViewBag.RepartidorID" required></select>
+                <span asp-validation-for="RepartidorID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ZonaEntrega" class="control-label">Zona de Entrega:</label>
+                <input asp-for="ZonaEntrega" class="form-control" required />
+                <span asp-validation-for="ZonaEntrega" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RutaEntrega" class="control-label">Ruta de Entrega:</label>
+                <input asp-for="RutaEntrega" class="form-control" required />
+                <span asp-validation-for="RutaEntrega" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FechaAsignacion" class="control-label">Fecha de Asignación:</label>
+                <input asp-for="FechaAsignacion" class="form-control" type="datetime-local" required />
+                <span asp-validation-for="FechaAsignacion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FechaEntregaReal" class="control-label">Fecha de Entrega Real (Opcional):</label>
+                <input asp-for="FechaEntregaReal" class="form-control" type="datetime-local" />
+                <span asp-validation-for="FechaEntregaReal" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Guardar Cambios" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,73 @@
+@model IEnumerable<impoTrack.Models.Entrega>
+
+@{
+    ViewData["Title"] = "Lista de Entregas";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Asignar Nueva Entrega</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Repartidor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZonaEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RutaEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAsignacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaEntregaReal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pedido.DireccionEntrega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Repartidor.Nombre) @Html.DisplayFor(modelItem => item.Repartidor.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZonaEntrega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RutaEntrega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaAsignacion)
+                </td>
+                <td>
+                    @if (item.FechaEntregaReal.HasValue)
+                    {
+                        @Html.DisplayFor(modelItem => item.FechaEntregaReal)
+                    }
+                    else
+                    {
+                        <span>Pendiente</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EntregaID" class="btn btn-sm btn-primary">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.EntregaID" class="btn btn-sm btn-info">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EntregaID" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

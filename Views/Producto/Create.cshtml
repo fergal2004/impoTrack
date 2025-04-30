@@ -1,0 +1,46 @@
+@model impoTrack.Models.Producto
+
+@{
+    ViewData["Title"] = "Agregar Nuevo Producto";
+}
+
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
+
+    <h4>Producto</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="NombreProducto" class="form-label"><i class="bi bi-tag me-2"></i> Nombre del Producto:</label>
+                    <input asp-for="NombreProducto" class="form-control" />
+                    <span asp-validation-for="NombreProducto" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Descripcion" class="form-label"><i class="bi bi-file-text me-2"></i> Descripción:</label>
+                    <textarea asp-for="Descripcion" class="form-control"></textarea>
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Precio" class="form-label"><i class="bi bi-cash-coin me-2"></i> Precio:</label>
+                    <input asp-for="Precio" class="form-control" />
+                    <span asp-validation-for="Precio" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-check-circle-fill me-2"></i> Crear</button>
+                    <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left-short me-2"></i> Volver a la Lista</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
