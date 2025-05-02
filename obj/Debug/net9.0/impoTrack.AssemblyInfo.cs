@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("impoTrack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e64a42a7ef21679e07417a8a570972faed4019d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65e4f6071b680ed7a281b51838a61ea7f87421c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("impoTrack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("impoTrack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,71 +1,86 @@
 @model IEnumerable<impoTrack.Models.Pedido>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pedidos";
 }
 
-<h1>Index</h1>
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaPedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoPedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DireccionEntrega)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteNombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Repartidor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Producto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaEntregaEstimada)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaPedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoPedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DireccionEntrega)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClienteNombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Repartidor.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaEntregaEstimada)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PedidoID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PedidoID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PedidoID">Delete</a>
-            </td>
-        </tr>
+    <p>
+        <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle-fill me-2"></i> Crear Nuevo</a>
+    </p>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FechaPedido)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EstadoPedido)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DireccionEntrega)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ClienteNombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Repartidor)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Producto)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FechaEntregaEstimada)
+                            </th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaPedido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EstadoPedido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DireccionEntrega)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ClienteNombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Repartidor.Nombre) @Html.DisplayFor(modelItem => item.Repartidor.Apellido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Producto.NombreProducto)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaEntregaEstimada)
+                                </td>
+                                <td>
+                                    <div class="d-flex gap-1">
+                                        <a asp-action="Edit" asp-route-id="@item.PedidoID" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-fill"></i> Editar</a>
+                                        <a asp-action="Details" asp-route-id="@item.PedidoID" class="btn btn-sm btn-outline-info"><i class="bi bi-info-circle-fill"></i> Detalles</a>
+                                        <a asp-action="Delete" asp-route-id="@item.PedidoID" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash-fill"></i> Eliminar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 }
-    </tbody>
-</table>

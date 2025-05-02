@@ -17,8 +17,8 @@ public class Producto
     public string Descripcion { get; set; }
 
     [Required]
-    [Column(TypeName = "decimal(10, 2)")] // Configura el tipo de dato decimal
+    [Column(TypeName = "decimal(10, 2)")] 
     public decimal Precio { get; set; }
 
-    public List<Pedido> Pedidos { get; set; }
+    public List<Pedido>? Pedidos { get; set; }
 }

@@ -9,8 +9,10 @@ public class Pedido
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // Autoincremental
     public int PedidoID { get; set; }
 
-    [Required] // No puede ser nulo en la base de datos
-    public DateTime FechaPedido { get; set; }
+    [Required]
+    [Display(Name = "Fecha de Pedido")]
+    [RegularExpression(@"^\d{4}-\d{2}-\d{2}$", ErrorMessage = "El formato de fecha debe ser AAAA-MM-DD.")]
+    public String FechaPedido { get; set; }
 
     [Required]
     [MaxLength(50)] // Limita la longitud de la cadena
@@ -33,7 +35,9 @@ public class Pedido
     public Producto? Producto { get; set; }
 
     [Required]
-    public DateTime FechaEntregaEstimada { get; set; }
+    [Display(Name = "Fecha de Entrega Estimada")]
+    [RegularExpression(@"^\d{4}-\d{2}-\d{2}$", ErrorMessage = "El formato de fecha debe ser AAAA-MM-DD.")]
+    public string FechaEntregaEstimada { get; set; }
 
     // Propiedades de navegación (EF Core)
     public List<Entrega>? Entregas { get; set; }

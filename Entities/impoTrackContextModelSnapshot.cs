@@ -143,16 +143,18 @@ namespace impoTrack.Entities
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<DateTime>("FechaEntregaEstimada")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("FechaEntregaEstimada")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.Property<DateTime>("FechaPedido")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("FechaPedido")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("ProductoID")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("RepartidorID")
+                    b.Property<int>("RepartidorID")
                         .HasColumnType("integer");
 
                     b.HasKey("PedidoID");
@@ -343,7 +345,9 @@ namespace impoTrack.Entities
 
                     b.HasOne("impoTrack.Models.Repartidor", "Repartidor")
                         .WithMany("Pedidos")
-                        .HasForeignKey("RepartidorID");
+                        .HasForeignKey("RepartidorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Producto");
 
